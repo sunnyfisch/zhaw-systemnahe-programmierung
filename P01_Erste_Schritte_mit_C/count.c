@@ -6,7 +6,7 @@ int main (void)
     (void) printf("Enter a text and press ENTER: ");
     int wordCount = 0;
     int charCount = 0;
-    char input, lastChar = ' ';
+    int input, lastChar = ' ';
 
     while ((input = getchar()) != '\n' ) {
         charCount++;

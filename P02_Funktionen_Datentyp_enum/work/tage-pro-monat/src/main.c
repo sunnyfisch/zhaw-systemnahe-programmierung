@@ -15,9 +15,50 @@
 #define ERROR_IN_YEAR 2
 
 ///// Student Code
+enum month {JAN=1, FEB, MAR, APR, MAI, JUN, JUL, AUG, SEP, OKT, NOV, DEZ};
 
+int gibIntWert(char* prompt, int start, int end) {
+    int number;
+    char input[50];
+    do {
+        printf("Input: %s", prompt);
+        fgets(input, 5, stdin);
+        number = atoi(input);
+    } while (number < start && number > end);
+    return number;
+}
 
+int istSchaltjahr(int jahr) {
+    if ((jahr % 4) == 0 && (jahr % 100 != 0) ) {
+        return 1;
+    } else if ((jahr % 400 == 0)) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
 
+int tageProMonat(int jahr, int monat) {
+    switch (monat) {
+        case JAN:
+        case MAR:
+        case MAI:
+        case JUL:
+        case AUG:
+        case OKT:
+        case DEZ:
+            return 31;
+        case FEB:
+            return istSchaltjahr(jahr) ? 29 : 28;
+        case APR:
+        case JUN:
+        case SEP:
+        case NOV:
+            return 30;
+        default:
+            return 0;
+    }
+}
 ///// END Student Code
 
 
